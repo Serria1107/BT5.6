@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập JavaScript - 6 bài luyện tập</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f2f6fb; color: #263347; }
+    .container { max-width: 1020px; margin: 36px auto; padding: 0 18px 36px; }
+    header { text-align: center; margin-bottom: 26px; }
+    h1 { color: #164a80; margin: 0 0 10px; font-size: 28px; }
+    header p { color: #64748b; margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .card { background: #fff; padding: 24px; border-radius: 14px; box-shadow: 0 4px 16px #1c3b6320; }
+    h2 { margin: 0 0 10px; color: #17518a; font-size: 20px; }
+    .description { margin: 0 0 16px; color: #526174; line-height: 1.55; min-height: 44px; }
+    label { display: block; font-weight: 600; margin: 12px 0 6px; font-size: 14px; }
+    input { display: block; width: 100%; padding: 11px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 15px; background: #fff; }
+    input:focus { outline: 2px solid #93c5fd; outline-offset: 1px; border-color: #2975bc; }
+    button { margin-top: 17px; background: #1767a8; color: white; padding: 11px 20px; border: 0; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+    button:hover { background: #0d4b7d; }
+    .result { min-height: 44px; padding: 12px; margin: 16px 0 0; background: #eaf4ff; color: #174b7b; border-radius: 8px; line-height: 1.5; overflow-wrap: anywhere; }
+    .result.error { background: #fff0f0; color: #a32020; }
+    .hint { color: #64748b; font-size: 13px; margin: 9px 0 0; }
+    @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } .description { min-height: 0; } h1 { font-size: 24px; } }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>6 BÀI TẬP JAVASCRIPT CƠ BẢN</h1>
+      <p>Nhập dữ liệu và xem kết quả trực tiếp trên giao diện HTML</p>
+    </header>
+
+    <div class="grid">
+      <!-- Bài 1: Chuyển đổi tiền tệ -->
+      <section class="card">
+        <h2>Bài 1: Chuyển đổi tiền tệ</h2>
+        <p class="description">Đổi USD sang VND theo tỷ giá 1 USD = 25.000 VND.</p>
+        <form id="form1">
+          <label for="usd">Số tiền USD</label>
+          <input type="number" id="usd" min="0" step="any" placeholder="Ví dụ: 100" required>
+          <button type="submit">Chuyển đổi</button>
+        </form>
+        <p class="result" id="result1" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+
+      <!-- Bài 2: Chẵn lẻ -->
+      <section class="card">
+        <h2>Bài 2: Kiểm tra số chẵn/lẻ</h2>
+        <p class="description">Nhập một số nguyên để kiểm tra là số chẵn hay số lẻ.</p>
+        <form id="form2">
+          <label for="so">Số nguyên</label>
+          <input type="number" id="so" step="1" placeholder="Ví dụ: 15" required>
+          <button type="submit">Kiểm tra</button>
+        </form>
+        <p class="result" id="result2" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+
+      <!-- Bài 3: BMI -->
+      <section class="card">
+        <h2>Bài 3: Tính chỉ số BMI</h2>
+        <p class="description">BMI = cân nặng (kg) / (chiều cao (m) × chiều cao (m)).</p>
+        <form id="form3">
+          <label for="height">Chiều cao (m)</label>
+          <input type="number" id="height" min="0.01" step="any" placeholder="Ví dụ: 1.7" required>
+          <label for="weight">Cân nặng (kg)</label>
+          <input type="number" id="weight" min="0.01" step="any" placeholder="Ví dụ: 65" required>
+          <button type="submit">Tính BMI</button>
+        </form>
+        <p class="result" id="result3" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+
+      <!-- Bài 4: Đăng nhập mô phỏng -->
+      <section class="card">
+        <h2>Bài 4: Đăng nhập (mô phỏng)</h2>
+        <p class="description">Kiểm tra tên đăng nhập và mật khẩu với giá trị cố định.</p>
+        <form id="form4">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" placeholder="Nhập username" autocomplete="username" required>
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" placeholder="Nhập password" autocomplete="current-password" required>
+          <button type="submit">Đăng nhập</button>
+        </form>
+        <p class="hint">Tài khoản thử: admin / 123456</p>
+        <p class="result" id="result4" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+
+      <!-- Bài 5: Giảm giá -->
+      <section class="card">
+        <h2>Bài 5: Máy tính giảm giá</h2>
+        <p class="description">Hóa đơn trên 500.000 VND được giảm 10%.</p>
+        <form id="form5">
+          <label for="bill">Số tiền hóa đơn (VND)</label>
+          <input type="number" id="bill" min="0" step="any" placeholder="Ví dụ: 600000" required>
+          <button type="submit">Tính tiền</button>
+        </form>
+        <p class="result" id="result5" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+
+      <!-- Bài 6: Tam giác đều -->
+      <section class="card">
+        <h2>Bài 6: Phân loại tam giác</h2>
+        <p class="description">Nhập 3 cạnh để kiểm tra có phải tam giác đều hay không.</p>
+        <form id="form6">
+          <label for="a">Cạnh a</label>
+          <input type="number" id="a" min="0.01" step="any" placeholder="Ví dụ: 5" required>
+          <label for="b">Cạnh b</label>
+          <input type="number" id="b" min="0.01" step="any" placeholder="Ví dụ: 5" required>
+          <label for="c">Cạnh c</label>
+          <input type="number" id="c" min="0.01" step="any" placeholder="Ví dụ: 5" required>
+          <button type="submit">Kiểm tra tam giác</button>
+        </form>
+        <p class="result" id="result6" role="status">Kết quả sẽ hiển thị tại đây.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const formatVND = (money) => new Intl.NumberFormat("vi-VN", {
+      style: "currency", currency: "VND", maximumFractionDigits: 2
+    }).format(money);
+
+    function showResult(id, message, isError = false) {
+      const result = document.getElementById(id);
+      result.textContent = message;
+      result.classList.toggle("error", isError);
+    }
+
+    // Bài 1: Chuyển USD sang VND
+    document.getElementById("form1").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const usd = Number(document.getElementById("usd").value);
+      if (!Number.isFinite(usd) || usd < 0) {
+        showResult("result1", "Vui lòng nhập số USD hợp lệ (không âm).", true);
+        return;
+      }
+      const vnd = usd * 25000;
+      showResult("result1", `${usd} USD = ${formatVND(vnd)}`);
+    });
+
+    // Bài 2: Kiểm tra chẵn lẻ
+    document.getElementById("form2").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const so = Number(document.getElementById("so").value);
+      if (!Number.isSafeInteger(so)) {
+        showResult("result2", "Vui lòng nhập một số nguyên hợp lệ.", true);
+        return;
+      }
+      if (so % 2 === 0) {
+        showResult("result2", `${so} là số chẵn.`);
+      } else {
+        showResult("result2", `${so} là số lẻ.`);
+      }
+    });
+
+    // Bài 3: Tính BMI
+    document.getElementById("form3").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const height = Number(document.getElementById("height").value);
+      const weight = Number(document.getElementById("weight").value);
+      if (!Number.isFinite(height) || !Number.isFinite(weight) || height <= 0 || weight <= 0) {
+        showResult("result3", "Chiều cao và cân nặng phải lớn hơn 0.", true);
+        return;
+      }
+      const bmi = weight / (height * height);
+      showResult("result3", `Chỉ số BMI của bạn là: ${bmi.toFixed(2)}.`);
+    });
+
+    // Bài 4: Kiểm tra đăng nhập (chỉ là mô phỏng phía trình duyệt)
+    const fixedUsername = "admin";
+    const fixedPassword = "123456";
+    document.getElementById("form4").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username === fixedUsername && password === fixedPassword) {
+        showResult("result4", "Đăng nhập thành công!");
+      } else {
+        showResult("result4", "Thông tin không chính xác.", true);
+      }
+    });
+
+    // Bài 5: Tính giảm giá
+    document.getElementById("form5").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const bill = Number(document.getElementById("bill").value);
+      if (!Number.isFinite(bill) || bill < 0) {
+        showResult("result5", "Vui lòng nhập số tiền hóa đơn hợp lệ (không âm).", true);
+        return;
+      }
+      const discount = bill > 500000 ? bill * 0.1 : 0;
+      const finalBill = bill - discount;
+      showResult("result5", `Giảm giá: ${formatVND(discount)}. Số tiền phải trả: ${formatVND(finalBill)}.`);
+    });
+
+    // Bài 6: Kiểm tra tam giác đều
+    document.getElementById("form6").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const a = Number(document.getElementById("a").value);
+      const b = Number(document.getElementById("b").value);
+      const c = Number(document.getElementById("c").value);
+      if (![a, b, c].every(x => Number.isFinite(x) && x > 0)) {
+        showResult("result6", "Các cạnh phải là số lớn hơn 0.", true);
+        return;
+      }
+      if (a + b <= c || a + c <= b || b + c <= a) {
+        showResult("result6", "Ba cạnh không tạo thành một tam giác.", true);
+      } else if (a === b && b === c) {
+        showResult("result6", "Đây là tam giác đều.");
+      } else {
+        showResult("result6", "Đây không phải tam giác đều.");
+      }
+    });
+  </script>
+</body>
+</html>
